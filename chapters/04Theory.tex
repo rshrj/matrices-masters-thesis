@@ -1,106 +1,93 @@
-%equations, bib. \\
+\section{D0-brane Matrix Model}
 
-\section{The BFSS action}
-\section{Matrix regularization of the supermembrane}
-\section{The BFSS Conjecture}
-\section{Two-body interactions at one-loop}
+Many great reviews exist on the subject, e.g., \cite{Taylor:2001vb,Bilal:1997fy,Ydri:2017ncg}. The M-theory matrix model or the BFSS model can be obtained through three different methods (that are, in fact, equivalent)
+\begin{enumerate}
+    \item[a.] Worldline theory of a large number ($N$) of D0 branes in type IIA string theory. \cite{Itzhaki:1998dd}
+    \item[b.] Dimensional reduction of $9+1$ dimensional Super Yang-Mills (SYM) theory to $0+1$ dimensions \cite{Claudson:1984th}.
+    \item[c.] Matrix regularization of the light-front quantized supermembrane theory \cite{deWit:1988wri}.
+\end{enumerate}
 
-A simple equation can be included as: \\
+The quantum mechanical model one obtains through this method has dynamical degrees of freedom that are $N \times N$ Hermitian matrices, and the structure of the theory is fixed entirely by three symmetries, $\mathrm{SU}(N)$, $\mathrm{SO}(9)$ and supersymmetry. In particular, one has $9$ bosonic matrices (as in, adjoint of $\mathfrak{su}(N)$) $X^i \ i=1,\ldots,9$ that transform as an $\mathrm{SO}(9)$ vector and $16$ fermionic matrices collectively called $\theta$ that transform as a $\mathrm{Spin}(9)$ Majorana spinor (each spinor component is an $N \times N$ matrix with grassmann odd elements). 
 
-\begin{equation}
-        r = 2\pi^{2}
-        \label{eqn:simple_eqn}
-\end{equation} \\
-
-
-\noindent The text below shows an example of how to align equations on the equal sign, with only one reference for both. This may be useful for when they are linked and are actually only one equation but splitting them up makes it more readable. \\
-
-\begin{equation}
-\begin{aligned}
-        a &= \sin^{2}(\Delta\phi/2) + \cos(\phi_{1})\cdot\cos(\phi_{2})\cdot\sin^{2}(\Delta\lambda/2)\\
-        d &= 2R\cdot\arcsin(\sqrt{a})
-\end{aligned}
-\label{eqn:haversine}
-\end{equation} \\
-
-\noindent The whole equation can be referenced as "equation \eqref{eqn:haversine}", here showing the Haversine formula. One may also align sub-equations such that they are numbered the same but have a letter differentiating them as shown below. This can be used when they are linked, but you will need to reference both individual parts.
-
-\begin{subequations}
+The matrices $X^i$ have the interpretation of the $N$ D0-brane positions when they are simultaneously diagonal. The off-diagonal entries of $X^i$ represent stringy degrees of freedom stretching from one D0-brane to another \cite{Polchinski:1996na}. The complete action one obtains through any of the above procedures (upto rescalings) is as follows
 \begin{align}
-    SSD 
-        & \quad = \sum_{i=1}^{n} (\vec{x_{i}}-\vec{\mu_{q}})^{2} \label{eq:ssd}\\[15pt] %creates more space between the sub-equations
-    SSE 
-        & \quad = \sum_{q=1}^{k} \delta_{rq} SSD \label{eq:sse}
+    \begin{split}
+    S[X, \theta, A] = \frac{1}{g_\mathrm{YM}^2} \int \text{d}t & \Tr \left( \frac{1}{2} D_{t}X^{i} D_{t}X^{i} \right. \\ 
+    & \left. + \frac{1}{4} \comm{X^i}{X^j}\comm{X^i}{X^j} + \frac{1}{2} \theta^T (i D_t{\theta} - \gamma_i \comm{X^i}{\theta}) \right)
+    \end{split} 
 \end{align}
-\label{eqn:subeqn}
-\end{subequations} \\
+where the gauge covariant derivative acts as
+\begin{equation}
+    D_t X^i = \dot{X}^i - i \comm{A_t}{X^i}
+\end{equation}
 
-\noindent These equations can be refrenced by their spesific sub-equation as "equation \eqref{eq:ssd}", or by the whole group as "equations \eqref{eqn:subeqn}". The "double backslashes" in the .tex creates line spaces and gives more room around the equations and paragraphs. Use them as you think feels right. 
+The parameter $g_\mathrm{YM}^2$ is the Yang-Mills coupling and has dimensions of $(\mathrm{energy})^3$. The relative coefficient between the bosonic and fermion parts of the action is fixed by supersymmetry. One can eliminate the $U(N)$ gauge field $A$ by fixing the gauge $A_t = 0$. Further, we restrict our attention to states in the model with no fermionic modes $\theta = 0$. Thus, the reduced theory is a matrix model of 9 Hermitian matrices $X^i$ with $i = 1, \ldots, 0$ with the action
+\begin{equation}\label{eqn:reduced-bfss-action}
+    S[X] = \frac{1}{2 g_\mathrm{YM}^2} \int \text{d}t \Tr \left( \dot{X}^i \dot{X}^i + \frac{1}{2} \comm{X^i}{X^j}\comm{X^i}{X^j} \right)
+\end{equation}
 
+% As it stands, the action in \cref{eqn:reduced-bfss-action} is invariant under the following scale transformation parameterized by $\lambda > 0$
+% \begin{alignat}{2}
+%     t &\to \tilde{t} && = \ \lambda t \\
+%     X^i(t) &\to \tilde{X}^i(\tilde{t}) && = \ \lambda X^i(t) 
+% \end{alignat}we
 
+The equations of motion are given by
+\begin{equation}\label{eqn:eom}
+    \ddot{X}^i = -\comm{\comm{X^i}{X^j}}{X^j}
+\end{equation}
 
-Here is an example of both a regular table with data and a table with split headers, for scientific usage. Do not use horizontal/vertical rulers between the data, or encase the table with rulers. \\
+The remnant of gauge fixing is the gauge constraint which follows from the $A_t$ equation of motion before gauge fixing.
 
-\begin{table}[ht!]
-\centering
-    \begin{tabular}{ m{3cm} m{2.5cm} m{2.5cm} m{2.5cm} m{2cm} } 
-    \toprule
-    \toprule
-    \textbf{Statistic} & \textbf{Velocity} & \textbf{Altitude} & \textbf{1/Angle} & \textbf{Temp.} \\
-    \midrule
-    Mean    & 122.68    & 240.98   & 93.75     & 13.95 \\[1.3ex]
-    Std     & 224.51    & 145.88   & 60.39     & 4.44  \\[1.3ex]
-    Q1      & 28.00     & 111.60   & 34.15     & 10.60 \\[1.3ex]
-    Median  & 63.00     & 223.20   & 99.59     & 13.30 \\[1.3ex]
-    Q3      & 137.00    & 359.10   & 151.99    & 16.70 \\[1.3ex]
-    Min     & 0.00      & 1.00     & 0.00      & 3.30  \\[1.3ex]
-    Max     & 14519.00  & 616.70   & 180.00    & 32.10 \\[1.3ex]
-    \bottomrule
-    \bottomrule
-    \end{tabular}
-% the square brackets after \caption gives the table a proper title in the list of tables, instead of just inserting the beginning of the table caption
-\caption[Dynamic feature statistics with outliers]{Table of dynamic feature statistics where outliers are included, for all data points. Velocity is given in \textit{m/h}, the altitude in \textit{mamsl}, the inverse trajectory angle in 1/degrees, and temperature in degrees Celsius.}
-\label{table:stat_fliers}
-\end{table}
+\begin{equation}
+    \comm{\dot{X}^i}{X^i} = 0
+\end{equation}
 
+A particularly nice way to visualize matrix configurations is to map them to embeddings of a sphere (or, more generally, of Riemann surfaces) in $\mathbb{R}^9$. This can be done for the sphere using matrix spherical harmonics (see \cref{app:matrix-harmonics}). We have chosen to exclude any results or further discussion of matrix harmonics in this regard since this would require truncating the matrix model to two or three matrices and would distract us from the primary purpose of this thesis. 
 
-\begin{table}[ht!]
-\centering
-    \begin{tabular}{ m{3cm} m{5cm} m{3cm} } 
-    \toprule
-    \toprule
-    \textbf{Area 1} & \textbf{Start date} & \textbf{End date} \\
-    \midrule
-    2018    & 03.06    & 29.06                       \\[1.3ex]
-    2019    & 03.06    & 03.07 or 31.08\footnotemark \\[1.3ex]
-    2020    & 03.06    & 05.09                       \\[1.3ex]
-    \midrule
-    \textbf{Area 2} & \textbf{Start date (farm 1/2)} & \textbf{End date} \\
-    \midrule
-    2012    & 09.06            & 07.09               \\[1.3ex]
-    2013    & 23.06 / 15.06    & 25.08               \\[1.3ex]
-    2014    & 05.06 / 25.06    & 10.09               \\[1.3ex]
-    2015    & 13.06 / 03.07    & 06.09               \\[1.3ex]
-    2016    & 17.06            & 22.07               \\[1.3ex]
-    \bottomrule
-    \bottomrule
-    \end{tabular}
-\caption[Selected time ranges for all data]{Selected time ranges for the data in all areas and all years.}
-\label{table:time_ranges}
-\end{table}
-
-\footnotetext{A footnote explaining something.}
+A curious consequence of the equations of motion \cref{eqn:eom} is that configuration of matrices that are block diagonal, i.e.
+\begin{equation}
+    X^i = \begin{pmatrix}
+        A^i & \\
+        & B^i
+    \end{pmatrix}
+\end{equation}
+where $A^i$ and $B^i$ are submatrices, and the velocities $\dot{X}^i$ are also diagonal, then the equations of motion ensure that the block diagonal pieces evolve completely independently with no interactions. The interpretation is that separate clusters of D0-branes see no interactions in the classical matrix model. Indeed, a surprising and wonderful result of Matrix theory is that if one includes quantum corrections to the effective potential between such clusters of D0-branes to one loop, we recover the classical supergravity interaction \cite{Douglas:1996yp,Paban:1998ea,Kabat:1997sa}. Indeed, this was pointed out by BFSS as a concrete test of their conjecture. In particular, in the simplest situation where two D0-brane particles are separated by a distance $r$ and with a relative velocity $v$ between them, the quantum effective potential around this background turns out to be
+\begin{equation}
+    V = -\frac{15}{16}\frac{v^4}{r^7} + \mathcal{O}\left( \frac{v^6}{r^{11}} \right)
+\end{equation}
+to leading order in $v/r^2$. This is precisely the Newton-like classical potential that 11-dimensional supergravity between probe test particles reduces to in the quasi-static approximation (see \cite{Taylor:2001vb} for an excellent review of matrix model interactions).
 
 
+\section{Scaling similarity}
+The gauge fixed BFSS action (including fermions) enjoys a scaling similarity under which
+\begin{align}\label{eqn:scaling-similarity}
+    t \to \lambda^{-1} t \qquad X^i \to \lambda X^i \qquad \theta \to \lambda^{3/2} \theta
+\end{align}
+We call this transformation a similarity (and not a symmetry) because it does not keep the action invariant, but it changes by a factor
+\begin{equation}
+    S[X, \theta] \to \lambda^3 S[X, \theta]
+\end{equation}
+Hence, it is a symmetry of the equations of motion but not a symmetry of the full quantum theory. Since we will be doing classical simulations, we will exploit this similarity to normalize the energy surfaces we study to any positive energy, say, $E = 1$. We can always do this because the Hamiltonian
+\begin{equation}
+    H = \frac{1}{2 g_\mathrm{YM}^2} \Tr \left( \dot{X}^i \dot{X}^i - \frac{1}{2} \comm{X^i}{X^j}\comm{X^i}{X^j} + \theta^{T}\gamma_i \comm{X^i}{\theta} \right)
+\end{equation}
+under \cref{eqn:scaling-similarity} scales like
+\begin{equation}
+    H \to \lambda^4 H
+\end{equation}
 
-Figure \ref{fig:latlong} is included as an example. The square brackets before the caption description contains the title of the figure, which is what will be written in the list of figures. This should be short and concise. The same layout applies to tables and other floats. Remember to change the title as well as the caption if you are copying these examples. In the list of figures and tables all the different floats will be grouped together by chapter. Remember to always reference all your figures and tables in the text at least once.
+Similarly, observables homogenous in the $X^i$ such as $\Tr X^i X^i$ scale in a specific way under \cref{eqn:scaling-similarity}. e.g.
+\begin{equation}
+    \Tr X^i X^i \to \lambda^2 \Tr X^i X^i
+\end{equation}
+Thus, we restrict attention to observables of this type. Further, we rescale all our variables so that $g_\mathrm{YM} = 1$.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.9\textwidth]{latlong.png}
-  \caption[Illustration of latitude and longitude]{Illustration of the earth, and how latitudes and longitudes are calculated with respect to the equator and the prime meridian.}
-  \label{fig:latlong}
-\end{figure}
+\section{Recent results}
+Many efforts have been made to understand non-perturbative aspects of string/M-theory via dual Matrix models using numerical methods. These primarily focus on Monte Carlo-type simulations in Euclidean spacetime (see \cite{Hanada:2012eg,Anagnostopoulos:2007fw} for a review). What distinguishes our work from the papers just cited is that we are working in a regime of Matrix theory where there are enormous stringy corrections in the dual quantum gravity. Thus, no simple description or expectations exist on that side. Further, we do real-time classical simulations instead of periodic Euclidean time path integrals. Despite this, we find behavior reminiscent of ordinary black holes, such as random matrices and the typicality of microstates.
 
-
-Here are some examples on how to reference a source (where none is relevant to the text but just for illustration purposes only). One may cite a single reference by calling \cite{wolves_of_mount_mckinley}, or several in the same bracket by calling \cite{machine_learning, clustering_impossibility} when they are all related to the same statement. There are many different styles on how to cite, and how the layout and order of your citation style is presented. This is my favorite, as I find it neat and tidy \cite{sheep}. It will show up in order of appearance in the references section.
+The Monte Carlo methods used in \cite{Hanada:2012eg} have been quite successful at doing precision tests of the holographic correspondence. For instance, the thermodynamic relations for the dual black geometry (see \cite{Maldacena:2018vsr}) have been derived numerically for large matrices where the result holds, including higher derivative corrections \cite{Hanada:2008ez}. Further, an interesting observable in these gauge theories that we will not have much to say about (since we are not working in Euclidean time) is the Polyakov loop in an $\mathfrak{su}(N)$ representation $R$
+\begin{equation}
+    W_R = \Tr_R \mathcal{P} \exp \left( i \oint A  \right)
+\end{equation}
+where the integral is taken over periodic Euclidean time. The thermal expectation value of this operator is an order parameter for confinement in pure gauge theories. In \cite{Witten:1998zw}, confinement in strong coupling limit of gauge theories was studied using dual gravity. Monte Carlo techniques have recently been used to confirm this M-theory picture \cite{Bergner:2021goh}. 

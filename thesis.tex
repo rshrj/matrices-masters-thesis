@@ -2,14 +2,16 @@
 \usepackage[utf8]{inputenc} %to manage special characters
 \usepackage[T1]{fontenc} %to manage special characters
 \usepackage[Bjarne]{fncychap} %fancy chapter style (many more available, like Sonny or Lenny etc.)
+
 \usepackage{fancyhdr} %to customize the headers
 \usepackage[lmargin=1.5in, rmargin=1in, tmargin=1in, bmargin=1in]{geometry} %sets the margins for the pages
 \setcounter{tocdepth}{2} %table of contents number depth for subsections (2 = x.x.x)
 \setcounter{secnumdepth}{4} %numbering depth for headers for subsections in the text(4 = x.x.x.x)
 \usepackage{url} %to include urls
 \usepackage{listings} %include this if you want to include code in the thesis
-\usepackage{mathtools} %mathematical package
 \usepackage{physics}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usepackage{mathtools} %mathematical package
 \usepackage{siunitx} %includes SI-units
 \usepackage[bf]{caption} %makes float captions bold
 \usepackage{array, booktabs} %to make better tables
@@ -18,9 +20,13 @@
 \usepackage[export]{adjustbox} %to adjust floats
 \usepackage{subfig} %to include subfigures
 \usepackage{chngcntr} %will make it possible to change the counter for tables, figures etc. such as below
-\counterwithin{figure}{section} %change counter for figures within sections (also possible to choose for each chapter
-\counterwithin{table}{section} %change counter for tables within sections
+\counterwithin{figure}{chapter} %change counter for figures within sections (also possible to choose for each chapter
+\counterwithin{table}{chapter} %change counter for tables within sections
 \usepackage{color, xcolor} %edit e.g. text colors
+\usepackage{cleveref}
+
+\usepackage{fontaxes}
+\usepackage{newtxtext, newtxmath}
 
 \usepackage[backend = biber,
             style = numeric,
@@ -29,7 +35,8 @@
             maxcitenames = 3,   % max names to include before et. al.
             ]{biblatex} %customize the look of your citations and bibliography
 \addbibresource{references/bibliography.bib} %declare the bibliography resource
-\graphicspath{ {./figures/} }
+
+\graphicspath{ {./figures} }
 \usepackage{comment} %to be able to comment out sections in the .tex files
 \usepackage{afterpage} %to customize page commands such as below
 \newcommand\myemptypage{
@@ -38,6 +45,8 @@
     \addtocounter{page}{-1}
     \newpage
     } %sets new page command to insert an empty page without adding to the page counter or having a page number
+
+\newcommand{\B}[1]{\boldsymbol{#1}}
 
 
 
@@ -56,8 +65,8 @@
 
 \centering
 
-\noindent \textbf{\Large Black Holes through the lens of Matrix theory} \\
-\vspace{1cm}
+\noindent \textbf{\LARGE Black Holes through the lens of Matrix theory} \\
+\vspace{1.5cm}
 
 \noindent {\large Rishi Raj} \\
 % \noindent {\large Any undertitle is written here} \\
@@ -65,11 +74,11 @@
 
 
 \vspace{1.5cm}
-\noindent \textit{A dissertation presented to the \\
+\noindent {A dissertation presented to the \\
 Department of Physics at the \\
 Indian Institute of Technology Madras \\
 in partial fulfillment of requirements for the \\
-Degree of Bachelor of Science (with Honors) \\
+Degree of Bachelor of Science (Hons) \\
 and Master of Science}
 
 \vspace{3cm}
@@ -83,7 +92,7 @@ and Master of Science}
 Co-supervisor: Dr. Vishnu Jejjala
 
 \vspace{1cm}
-January 2023 \\
+May 2023 \\
 
 
 \end{titlepage}
@@ -93,6 +102,10 @@ January 2023 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % The pre-chapters
+\chapter*{Thesis Certificate} %pre-chapters should not be numbered, hence the "*"
+\input{chapters/00Certificate} %insert the chapter text from the files
+\myemptypage
+
 \chapter*{Abstract} %pre-chapters should not be numbered, hence the "*"
 \pagenumbering{roman} %introductory pages should be roman
 \setcounter{page}{1}
@@ -113,12 +126,12 @@ January 2023 \\
 \listoftables
 
 
-\chapter*{Abbreviations}
-\addcontentsline{toc}{chapter}{\protect\numberline{}Notation and Conventions}
-\input{chapters/02Abbreviations}
-\newpage
-\myemptypage
-%add an empty non-counted page by the command below in order to get the first chapter on the left hand side, if needed (check your page number so that the first chapter is on an odd page)
+% \chapter*{Abbreviations}
+% \addcontentsline{toc}{chapter}{\protect\numberline{}Notation and Conventions}
+% \input{chapters/02Abbreviations}
+% \newpage
+% \myemptypage
+% %add an empty non-counted page by the command below in order to get the first chapter on the left hand side, if needed (check your page number so that the first chapter is on an odd page)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,6 +146,7 @@ January 2023 \\
 %you could also design the footer if you wish, for example:
 %\fancyfoot[LE, RO]{\thepage}
 \setlength{\headheight}{14.49998pt} %set the header height
+\setlength{\parskip}{10pt plus2pt}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -145,33 +159,18 @@ January 2023 \\
 %the cleardoublepage command ensures that the next text page is on the right-hand side (odd page) and produces a blank page if necessary to achieve that, as all chapters should begin on the right hand side
 
 
-\chapter{Review of Matrix theory}
+\chapter{Lightening Review}
 \input{chapters/04Theory}
 \cleardoublepage
 
 
-\chapter{The Bosonic Sector}
-\input{chapters/05Method}
-\cleardoublepage
-
-
-\chapter{Numerical Analysis of the classical theory}
+\chapter{Summary of Numerical Studies}
 \input{chapters/05Results}
-\cleardoublepage
-
-
-\chapter{Quantum mechanical effects}
-\input{chapters/06QuantumMechanicalEffects}
 \cleardoublepage
 
 
 \chapter{Discussion}
 \input{chapters/06Discussion}
-\cleardoublepage
-
-
-\chapter{Conclusion}
-\input{chapters/07Conclusion}
 \cleardoublepage
 
 
