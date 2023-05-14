@@ -23,6 +23,7 @@
 \counterwithin{figure}{chapter} %change counter for figures within sections (also possible to choose for each chapter
 \counterwithin{table}{chapter} %change counter for tables within sections
 \usepackage{color, xcolor} %edit e.g. text colors
+\usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
 
 \usepackage{fontaxes}
@@ -39,6 +40,7 @@
 \graphicspath{ {./figures} }
 \usepackage{comment} %to be able to comment out sections in the .tex files
 \usepackage{afterpage} %to customize page commands such as below
+
 \newcommand\myemptypage{
     \null
     \thispagestyle{empty}
